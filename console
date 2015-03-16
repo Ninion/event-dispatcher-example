@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+set_time_limit(0);
+require_once __DIR__.'/vendor/autoload.php';
+
+use SDPHP\EventDispatcherTest\Command\TimeCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+
+$dispatcher = new EventDispatcher();
+
+$application = new Application();
+$application->add(new TimeCommand($dispatcher));
+$application->run();
